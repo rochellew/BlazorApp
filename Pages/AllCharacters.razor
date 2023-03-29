@@ -1,0 +1,38 @@
+@page "/allcharacters"
+
+<PageTitle>Characters</PageTitle>
+
+@using BlazorApp.Data
+
+<h1 class="jumbotron text-center">Viewing @characters.Count Characters from the File</h1>
+<hr/>
+<div class="container">
+    @foreach(var c in characters)
+    {
+        <div class="row">
+            <div  class="col-5 image-container">
+                <img width="50%" height="auto" src="@c.ImagePath" />
+            </div>
+            <div class="col-7">
+                <h2 class=@((c.Name == "King K. Rool") ? "gold-gradient" : "")>@c.Name</h2>
+                <p style="font-size: 1.3em">@c.FirstGame - @c.YearAppeared</p>
+                <div class="quote">
+                    <p>"@c.Quote"</p>
+                </div>
+
+            </div>
+        </div>
+        @if(c != characters.Last())
+        {
+            <hr />
+        }
+        else
+        {
+            <br />
+        }
+    }
+</div>
+
+@code {
+    List<Character> characters = CharacterReader.ReadAllCharacters();
+}
