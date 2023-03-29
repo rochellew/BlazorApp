@@ -28,6 +28,7 @@ public class CharacterReader
             characters.Add(character);
         }
 
+        characters.Sort();
         //Return the list of characters
         return characters;
     }

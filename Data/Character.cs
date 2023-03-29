@@ -1,4 +1,5 @@
-public class Character{
+public class Character : IComparable
+{
     public string Name {get;set;} = string.Empty;
     public string ImagePath {get;set;} = string.Empty;
     public string FirstGame{get;set;} = string.Empty;
@@ -15,5 +16,11 @@ public class Character{
         FirstGame = firstGame;
         YearAppeared = yearAppeared;
         Quote = quote;
+    }
+
+    public int CompareTo(object? obj)
+    {
+        var character = obj as Character;
+        return this.Name.CompareTo(character!.Name);
     }
 }
